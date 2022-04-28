@@ -1,0 +1,21 @@
+#keyboard {
+  display: flex;
+  flex-direction: column;
+
+  .rowKeyboard {
+    display: flex;
+    width: 50vw;
+  }
+
+  .caseKeyboard {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #d3d6da;
+  }
+
+  .letterKeyboard {
+    
+  }
+}

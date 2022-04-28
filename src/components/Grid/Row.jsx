@@ -1,4 +1,4 @@
-import './Game.scss';
+import './Grid.scss';
 import Case from "./Case";
 
 function Row() {

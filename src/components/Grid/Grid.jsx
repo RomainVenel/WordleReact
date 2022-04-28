@@ -1,4 +1,4 @@
-import './Game.scss';
+import './Grid.scss';
 import './Row'
 import Row from "./Row";
 
