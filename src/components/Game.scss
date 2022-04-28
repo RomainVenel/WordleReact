@@ -1,0 +1,36 @@
+#grid {
+  width: 350px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .row {
+    display: flex;
+    height: 100%;
+    gap: 6px;
+  }
+
+  .case {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #d3d6da;
+  }
+
+  .letter {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: bold;
+    vertical-align: middle;
+    box-sizing: border-box;
+    color: black;
+    text-transform: uppercase;
+    user-select: none;
+  }
+}
