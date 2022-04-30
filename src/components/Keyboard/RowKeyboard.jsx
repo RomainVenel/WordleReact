@@ -14,9 +14,11 @@ function RowKeyboard() {
                 ))}
             </div>
             <div className={'rowKeyboard'}>
+                <Key key={'ENTER'} value={'ENTER'}/>
                 {['W','X','C','V','B','N'].map((key) => (
                     <Key key={key} value={key}/>
                 ))}
+                <Key key={'DELETE'} value={'DELETE'}/>
             </div>
         </div>
     )

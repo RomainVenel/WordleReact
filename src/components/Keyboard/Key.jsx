@@ -1,7 +1,7 @@
 function Key(props) {
 
     return (
-        <div className={'caseKeyboard'}>{props.value}</div>
+        <button className={'caseKeyboard'}>{props.value}</button>
     )
 }
 export default Key;
