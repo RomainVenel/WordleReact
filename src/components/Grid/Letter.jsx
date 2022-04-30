@@ -1,6 +1,6 @@
 function Letter() {
     return (
-        <div className={'letter'}>A</div>
+        <div className={'letter'}></div>
     )
 }
 export default Letter;

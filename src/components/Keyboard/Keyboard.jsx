@@ -5,8 +5,6 @@ function Keyboard() {
     return (
         <div id={'keyboard'}>
             <RowKeyboard/>
-            <RowKeyboard/>
-            <RowKeyboard/>
         </div>
     )
 }
