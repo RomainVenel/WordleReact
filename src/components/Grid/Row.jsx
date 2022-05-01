@@ -3,17 +3,24 @@ import Case from "./Case";
 import {WordleContext} from "../../context/wordleContext";
 import * as React from "react";
 
-function Row() {
+function Row(props) {
 
     const {letter} = React.useContext(WordleContext);
 
+    const getLetter = () => {
+        if (props.state) {
+            return letter;
+        }
+        return '';
+    };
+
     return(
         <div className={'row'}>
-            <Case word={letter}/>
-            <Case word={letter}/>
-            <Case word={letter}/>
-            <Case word={letter}/>
-            <Case word={letter}/>
+            <Case word={getLetter()}/>
+            <Case word={getLetter()}/>
+            <Case word={getLetter()}/>
+            <Case word={getLetter()}/>
+            <Case word={getLetter()}/>
         </div>
     )
 }
