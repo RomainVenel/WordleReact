@@ -1,6 +1,8 @@
 import Key from "./Key";
+import * as React from "react";
 
 function RowKeyboard() {
+
     return (
         <div>
             <div className={'rowKeyboard'}>

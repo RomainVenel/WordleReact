@@ -1,6 +1,6 @@
-function Letter() {
+function Letter(props) {
     return (
-        <div className={'letter'}></div>
+        <div className={'letter'}>{props.word}</div>
     )
 }
 export default Letter;

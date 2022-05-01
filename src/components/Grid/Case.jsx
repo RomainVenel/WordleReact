@@ -1,9 +1,9 @@
 import Letter from "./Letter";
 
-function Case() {
+function Case(props) {
     return(
         <div className={'case'}>
-            <Letter/>
+            <Letter word={props.word}/>
         </div>
     )
 }
