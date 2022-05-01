@@ -5,22 +5,20 @@ import * as React from "react";
 
 function Row(props) {
 
-    const {letter} = React.useContext(WordleContext);
+    const {letter, indexCase} = React.useContext(WordleContext);
+    const numbers = [0, 1, 2, 3, 4];
 
-    const getLetter = () => {
-        if (props.state) {
+    const getLetter = (index) => {
+        if (props.stateRow && indexCase === index) {
             return letter;
         }
-        return '';
     };
 
     return(
         <div className={'row'}>
-            <Case word={getLetter()}/>
-            <Case word={getLetter()}/>
-            <Case word={getLetter()}/>
-            <Case word={getLetter()}/>
-            <Case word={getLetter()}/>
+            {numbers.map((number) =>
+                <Case key={number} word={getLetter(number)}/>
+            )}
         </div>
     )
 }
