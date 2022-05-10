@@ -3,13 +3,15 @@ import {WordleContext} from "../../context/wordleContext";
 
 function Key(props) {
 
-    const {setLetter, setIndexCase, indexCase, setIndexRow, indexRow} = React.useContext(WordleContext);
+    const {setLetter, setIndexCase, indexCase, setIndexRow, placedLetters} = React.useContext(WordleContext);
 
     function handleClick(e) {
+        let letter = e.currentTarget.innerText;
         e.preventDefault();
-        setLetter(e.currentTarget.innerText);
+        setLetter(letter);
         setIndexRow(0);
         setIndexCase(indexCase + 1);
+        placedLetters.push(letter);
     }
 
     return (
