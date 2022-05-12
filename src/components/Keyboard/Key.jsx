@@ -6,12 +6,21 @@ function Key(props) {
     const {setLetter, setIndexCase, indexCase, setIndexRow, placedLetters} = React.useContext(WordleContext);
 
     function handleClick(e) {
-        let letter = e.currentTarget.innerText;
         e.preventDefault();
-        setLetter(letter);
-        setIndexRow(0);
-        setIndexCase(indexCase + 1);
-        placedLetters.push(letter);
+        let letter = e.currentTarget.innerText;
+        if (letter !== 'DELETE') {
+            setLetter(letter);
+            setIndexRow(0);
+            setIndexCase(indexCase + 1);
+            placedLetters.push(letter);
+        } else {
+            // Suppression de la dernière lettre rentrée
+            setIndexRow(0);
+            setIndexCase(indexCase - 1);
+            placedLetters.pop();
+            let letter = placedLetters[placedLetters.length - 1];
+            setLetter(letter);
+        }
     }
 
     return (
