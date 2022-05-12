@@ -10,6 +10,7 @@ function App() {
     const [indexCase, setIndexCase] = useState(-1);
     const [letter, setLetter] = useState('');
     const [placedLetters, setPlacedLetters] = useState([]);
+    const [errorMessage, setErrorMessage] = React.useState("");
 
     const value = useMemo(function () {
         return {
@@ -21,12 +22,15 @@ function App() {
             setLetter: setLetter,
             placedLetters: placedLetters,
             setPlacedLetters: setPlacedLetters,
+            errorMessage: errorMessage,
+            setErrorMessage: setErrorMessage,
         }
-    }, [setIndexRow, indexRow, setIndexCase, indexCase, setLetter, letter, placedLetters, setPlacedLetters]);
+    }, [setIndexRow, indexRow, setIndexCase, indexCase, setLetter, letter, placedLetters, setPlacedLetters, errorMessage, setErrorMessage]);
 
   return (
       <WordleContext.Provider value={value}>
         <div className="App">
+            {errorMessage && <div className="error"> {errorMessage} </div>}
             <Grid/>
             <Keyboard/>
         </div>
