@@ -25,8 +25,11 @@ function Key(props) {
         } else {
             setLetter(letter);
             setIndexRow(0);
-            setIndexCase(indexCase + 1);
-            placedLetters.push(letter);
+            // Vérification de la taille du mot pour ne pas rajouter des lettres dans le tableau si déjà taille max
+            if (placedLetters.length < 5) {
+                setIndexCase(indexCase + 1);
+                placedLetters.push(letter);
+            }
         }
     }
 
