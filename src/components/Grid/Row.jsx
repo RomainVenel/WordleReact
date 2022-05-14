@@ -8,7 +8,6 @@ function Row(props) {
     const {letter, indexCase, placedLetters} = React.useContext(WordleContext);
     const numbers = [0, 1, 2, 3, 4];
 
-
     const getLetter = (index) => {
         if (props.stateRow) {
             if (indexCase === index) {

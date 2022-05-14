@@ -6,7 +6,7 @@ import React, { useState, useMemo } from 'react'
 
 function App() {
 
-    const [indexRow, setIndexRow] = useState(-1);
+    const [indexRow, setIndexRow] = useState(0);
     const [indexCase, setIndexCase] = useState(-1);
     const [letter, setLetter] = useState('');
     const [placedLetters, setPlacedLetters] = useState([]);

@@ -13,7 +13,7 @@ function Grid() {
 
     const getRow = (index) => {
         if (indexRow === index) {
-            return <Row index={index} stateRow={isActiveRow}/>
+            return <Row key={index} index={index} stateRow={isActiveRow}/>
         }
         return <Row key={index} index={index} stateRow={false}/>
 

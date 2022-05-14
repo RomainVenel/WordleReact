@@ -3,14 +3,14 @@ import {WordleContext} from "../../context/wordleContext";
 
 function Key(props) {
 
-    const {setLetter, setIndexCase, indexCase, setIndexRow, placedLetters, setErrorMessage} = React.useContext(WordleContext);
+    const {setLetter, setIndexCase, indexCase, setIndexRow, indexRow, placedLetters, setPlacedLetters, setErrorMessage} = React.useContext(WordleContext);
 
     function handleClick(e) {
         e.preventDefault();
         let letter = e.currentTarget.innerText;
         if (letter === 'DELETE') {
             // Suppression de la dernière lettre rentrée
-            setIndexRow(0);
+            setIndexRow(indexRow);
             setIndexCase(indexCase - 1);
             placedLetters.pop();
             let letter = placedLetters[placedLetters.length - 1];
@@ -19,12 +19,19 @@ function Key(props) {
             // Touche entrée
             if (placedLetters.length < 5) {
                 setErrorMessage('Veuillez entrer un mot de 5 lettres');
+                setTimeout(() => {
+                    setErrorMessage('');
+                }, 2000);
             } else {
+                // Réinitialisation de toutes les variables + passage à la ligne
+                setPlacedLetters([]);
                 setErrorMessage('');
+                setIndexRow(indexRow + 1);
+                setIndexCase(-1);
             }
         } else {
             setLetter(letter);
-            setIndexRow(0);
+            setIndexRow(indexRow);
             // Vérification de la taille du mot pour ne pas rajouter des lettres dans le tableau si déjà taille max
             if (placedLetters.length < 5) {
                 setIndexCase(indexCase + 1);
