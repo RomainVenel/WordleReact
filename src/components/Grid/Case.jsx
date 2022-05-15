@@ -3,8 +3,10 @@ import * as React from "react";
 
 function Case(props) {
 
+    let isActive = props.word;
+
         return(
-            <div className={'case'}>
+            <div className={'case ' + (isActive ? 'isActive': '')}>
                 <Letter word={props.word}/>
         </div>
     )

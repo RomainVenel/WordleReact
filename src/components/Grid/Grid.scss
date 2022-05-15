@@ -9,10 +9,6 @@
     display: flex;
     height: 100%;
     gap: 6px;
-
-    .isActive {
-
-    }
   }
 
   .case {
@@ -37,4 +33,9 @@
     text-transform: uppercase;
     user-select: none;
   }
+}
+
+.isActive {
+  border: 2px solid #878a8c !important;
+  color: #000000;
 }
