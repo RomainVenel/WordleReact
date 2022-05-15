@@ -2,11 +2,11 @@ import RowKeyboard from "./RowKeyboard";
 import './Keyboard.scss';
 import * as React from "react";
 
-function Keyboard() {
+function Keyboard(props) {
 
     return (
         <div id={'keyboard'}>
-            <RowKeyboard/>
+            <RowKeyboard randomWord={props.randomWord}/>
         </div>
     )
 }

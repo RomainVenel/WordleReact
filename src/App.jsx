@@ -2,9 +2,9 @@ import './App.scss';
 import Grid from "./components/Grid/Grid";
 import Keyboard from "./components/Keyboard/Keyboard";
 import {WordleContext} from "./context/wordleContext";
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react';
 
-function App() {
+function App(props) {
 
     const [indexRow, setIndexRow] = useState(0);
     const [indexCase, setIndexCase] = useState(-1);
@@ -28,13 +28,15 @@ function App() {
     }, [setIndexRow, indexRow, setIndexCase, indexCase, setLetter, letter, placedLetters, setPlacedLetters, errorMessage, setErrorMessage]);
 
   return (
-      <WordleContext.Provider value={value}>
-        <div className="App">
-            {errorMessage && <div className="error"> {errorMessage} </div>}
-            <Grid/>
-            <Keyboard/>
-        </div>
-      </WordleContext.Provider>
+      <div>
+          <WordleContext.Provider value={value}>
+            <div className="App">
+                {errorMessage && <div className="error"> {errorMessage} </div>}
+                <Grid/>
+                <Keyboard randomWord={props.randomWord}/>
+            </div>
+        </WordleContext.Provider>
+      </div>
   );
 }
 

@@ -5,13 +5,39 @@ function Key(props) {
 
     const {setLetter, setIndexCase, indexCase, setIndexRow, indexRow, placedLetters, setPlacedLetters, setErrorMessage} = React.useContext(WordleContext);
 
+    function checkWord(word) {
+        let randomWord = '';
+        props.randomWord.then(function(value) {
+                randomWord = value;
+                randomWord = randomWord.split("");
+                console.log(randomWord);
+                console.log(placedLetters);
+                if (JSON.stringify(randomWord) !== JSON.stringify(placedLetters)) {
+                    setErrorMessage('Mauvais mot');
+                    setTimeout(() => {
+                        setErrorMessage('');
+                    }, 2000);
+                } else {
+                    // Réinitialisation de toutes les variables + passage à la ligne
+                    setPlacedLetters([]);
+                    setErrorMessage('');
+                    setIndexRow(indexRow + 1);
+                    setIndexCase(-1);
+                }
+            },
+            function(error) {  });
+    }
+
     function handleClick(e) {
         e.preventDefault();
         let letter = e.currentTarget.innerText;
         if (letter === 'DELETE') {
             // Suppression de la dernière lettre rentrée
             setIndexRow(indexRow);
-            setIndexCase(indexCase - 1);
+            // L'index est toujours minimum à 0
+            if (indexCase > -1) {
+                setIndexCase(indexCase - 1);
+            }
             placedLetters.pop();
             let letter = placedLetters[placedLetters.length - 1];
             setLetter(letter);
@@ -23,11 +49,7 @@ function Key(props) {
                     setErrorMessage('');
                 }, 2000);
             } else {
-                // Réinitialisation de toutes les variables + passage à la ligne
-                setPlacedLetters([]);
-                setErrorMessage('');
-                setIndexRow(indexRow + 1);
-                setIndexCase(-1);
+                checkWord(placedLetters);
             }
         } else {
             setLetter(letter);
