@@ -3,21 +3,19 @@ import {WordleContext} from "../../context/wordleContext";
 
 function Key(props) {
 
-    const {setLetter, setIndexCase, indexCase, setIndexRow, indexRow, placedLetters, setPlacedLetters, setErrorMessage} = React.useContext(WordleContext);
+    const {setLetter, setIndexCase, indexCase, setIndexRow, indexRow, placedLetters, setPlacedLetters, oldWords, setOldWords, setErrorMessage} = React.useContext(WordleContext);
 
-    function checkWord(word) {
+    function checkWord() {
         let randomWord = '';
         props.randomWord.then(function(value) {
                 randomWord = value;
                 randomWord = randomWord.split("");
                 console.log(randomWord);
                 console.log(placedLetters);
-                if (JSON.stringify(randomWord) !== JSON.stringify(placedLetters)) {
-                    setErrorMessage('Mauvais mot');
-                    setTimeout(() => {
-                        setErrorMessage('');
-                    }, 2000);
+                if (JSON.stringify(randomWord) === JSON.stringify(placedLetters)) {
+                    setErrorMessage('Bien joué');
                 } else {
+                    setOldWords([...oldWords, placedLetters]);
                     // Réinitialisation de toutes les variables + passage à la ligne
                     setPlacedLetters([]);
                     setErrorMessage('');
@@ -49,7 +47,7 @@ function Key(props) {
                     setErrorMessage('');
                 }, 2000);
             } else {
-                checkWord(placedLetters);
+                checkWord();
             }
         } else {
             setLetter(letter);

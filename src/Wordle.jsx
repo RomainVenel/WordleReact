@@ -10,6 +10,7 @@ function Wordle(props) {
     const [indexCase, setIndexCase] = useState(-1);
     const [letter, setLetter] = useState('');
     const [placedLetters, setPlacedLetters] = useState([]);
+    const [oldWords, setOldWords] = useState([]);
     const [errorMessage, setErrorMessage] = React.useState("");
 
     const value = useMemo(function () {
@@ -22,10 +23,12 @@ function Wordle(props) {
             setLetter: setLetter,
             placedLetters: placedLetters,
             setPlacedLetters: setPlacedLetters,
+            oldWords: oldWords,
+            setOldWords: setOldWords,
             errorMessage: errorMessage,
             setErrorMessage: setErrorMessage,
         }
-    }, [setIndexRow, indexRow, setIndexCase, indexCase, setLetter, letter, placedLetters, setPlacedLetters, errorMessage, setErrorMessage]);
+    }, [setIndexRow, indexRow, setIndexCase, indexCase, setLetter, letter, placedLetters, setPlacedLetters, oldWords, setOldWords, errorMessage, setErrorMessage]);
 
   return (
       <div>
