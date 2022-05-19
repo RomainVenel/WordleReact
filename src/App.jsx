@@ -1,43 +1,35 @@
-import './App.scss';
-import Grid from "./components/Grid/Grid";
-import Keyboard from "./components/Keyboard/Keyboard";
-import {WordleContext} from "./context/wordleContext";
-import React, { useState, useMemo } from 'react';
+import textfile from "./dictionnaire.txt";
+import * as React from "react";
+import Wordle from "./Wordle";
 
-function App(props) {
+function App() {
 
-    const [indexRow, setIndexRow] = useState(0);
-    const [indexCase, setIndexCase] = useState(-1);
-    const [letter, setLetter] = useState('');
-    const [placedLetters, setPlacedLetters] = useState([]);
-    const [errorMessage, setErrorMessage] = React.useState("");
+    let ok = downloadDictionnary().then(r => {
+        return r;
+    });
 
-    const value = useMemo(function () {
-        return {
-            indexRow: indexRow,
-            setIndexRow: setIndexRow,
-            indexCase: indexCase,
-            setIndexCase: setIndexCase,
-            letter: letter,
-            setLetter: setLetter,
-            placedLetters: placedLetters,
-            setPlacedLetters: setPlacedLetters,
-            errorMessage: errorMessage,
-            setErrorMessage: setErrorMessage,
+    async function downloadDictionnary() {
+        try {
+            let response = await fetch(textfile);
+            let text_data = await response.text();
+            let wordList = text_data.split(" ");
+            let maxWords = wordList.length;
+            let wordNumber = getRandomInt(0,maxWords);
+            let random = wordList[wordNumber];
+            return random;
+        } catch (error) {
+            console.log(error);
         }
-    }, [setIndexRow, indexRow, setIndexCase, indexCase, setLetter, letter, placedLetters, setPlacedLetters, errorMessage, setErrorMessage]);
+    }
 
-  return (
-      <div>
-          <WordleContext.Provider value={value}>
-            <div className="App">
-                {errorMessage && <div className="error"> {errorMessage} </div>}
-                <Grid/>
-                <Keyboard randomWord={props.randomWord}/>
-            </div>
-        </WordleContext.Provider>
-      </div>
-  );
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+    return (
+        <Wordle randomWord={ok}/>
+    )
 }
-
 export default App;
