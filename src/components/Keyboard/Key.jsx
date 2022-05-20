@@ -32,6 +32,8 @@ function Key(props) {
         testedWord.map((letter, index) => {
             if (letter === randomWord[index]) {
                 colorArray[index] = 'green';
+            } else if (randomWord.indexOf(letter) >= 0) {
+                colorArray[index] = 'orange';
             } else {
                 colorArray[index] = 'grey';
             }
