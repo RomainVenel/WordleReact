@@ -3,7 +3,7 @@ import {WordleContext} from "../../context/wordleContext";
 
 function Key(props) {
 
-    const {setLetter, setIndexCase, indexCase, setIndexRow, indexRow, placedLetters, setPlacedLetters, oldWords, setOldWords, setErrorMessage} = React.useContext(WordleContext);
+    const {setLetter, setIndexCase, indexCase, setIndexRow, indexRow, placedLetters, setPlacedLetters, oldWords, setOldWords, colors, setColors, setErrorMessage} = React.useContext(WordleContext);
 
     function checkWord() {
         let randomWord = '';
@@ -15,6 +15,7 @@ function Key(props) {
                 if (JSON.stringify(randomWord) === JSON.stringify(placedLetters)) {
                     setErrorMessage('Bien joué');
                 } else {
+                    checkLetters(randomWord, placedLetters);
                     setOldWords([...oldWords, placedLetters]);
                     // Réinitialisation de toutes les variables + passage à la ligne
                     setPlacedLetters([]);
@@ -24,6 +25,18 @@ function Key(props) {
                 }
             },
             function(error) {  });
+    }
+
+    function checkLetters(randomWord, testedWord) {
+        let colorArray = [];
+        testedWord.map((letter, index) => {
+            if (letter === randomWord[index]) {
+                colorArray[index] = 'green';
+            } else {
+                colorArray[index] = 'grey';
+            }
+            setColors([...colors, colorArray]);
+        });
     }
 
     function handleClick(e) {

@@ -6,7 +6,7 @@ function Case(props) {
     let isActive = props.word;
 
         return(
-            <div className={'case ' + (isActive ? 'isActive': '')}>
+            <div className={'case '+ props.color + ' ' + (isActive ? 'isActive': '')}>
                 <Letter word={props.word}/>
         </div>
     )

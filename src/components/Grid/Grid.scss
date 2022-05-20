@@ -19,6 +19,21 @@
     border: 2px solid #d3d6da;
   }
 
+  .green {
+    background-color: #6aaa64;
+
+    .letter {
+      color: white;
+    }
+  }
+
+  .grey {
+    background-color: #787c7e;
+    .letter {
+      color: white;
+    }
+  }
+
   .letter {
     width: 100%;
     display: inline-flex;
