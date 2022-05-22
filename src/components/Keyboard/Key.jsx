@@ -12,30 +12,36 @@ function Key(props) {
                 randomWord = randomWord.split("");
                 console.log(randomWord);
                 console.log(placedLetters);
+
+                setOldWords([...oldWords, placedLetters]);
+                // Réinitialisation de toutes les variables + passage à la ligne
+                setPlacedLetters([]);
+                setIndexRow(indexRow + 1);
+                setIndexCase(-1);
+
                 if (JSON.stringify(randomWord) === JSON.stringify(placedLetters)) {
                     setErrorMessage('Bien joué');
+                    checkLetters(randomWord, placedLetters, true);
                 } else {
-                    checkLetters(randomWord, placedLetters);
-                    setOldWords([...oldWords, placedLetters]);
-                    // Réinitialisation de toutes les variables + passage à la ligne
-                    setPlacedLetters([]);
-                    setErrorMessage('');
-                    setIndexRow(indexRow + 1);
-                    setIndexCase(-1);
+                    checkLetters(randomWord, placedLetters, false);
                 }
             },
             function(error) {  });
     }
 
-    function checkLetters(randomWord, testedWord) {
+    function checkLetters(randomWord, testedWord, win) {
         let colorArray = [];
         testedWord.map((letter, index) => {
-            if (letter === randomWord[index]) {
-                colorArray[index] = 'green';
-            } else if (randomWord.indexOf(letter) >= 0) {
-                colorArray[index] = 'orange';
+            if (!win) {
+                if (letter === randomWord[index]) {
+                    colorArray[index] = 'green';
+                } else if (randomWord.indexOf(letter) >= 0) {
+                    colorArray[index] = 'orange';
+                } else {
+                    colorArray[index] = 'grey';
+                }
             } else {
-                colorArray[index] = 'grey';
+                colorArray[index] = 'green';
             }
             setColors([...colors, colorArray]);
         });
