@@ -3,6 +3,7 @@ import Grid from "./components/Grid/Grid";
 import Keyboard from "./components/Keyboard/Keyboard";
 import {WordleContext} from "./context/wordleContext";
 import React, { useState, useMemo } from 'react';
+import Navbar from "./components/Navbar/Navbar";
 
 function Wordle(props) {
 
@@ -36,12 +37,13 @@ function Wordle(props) {
   return (
       <div>
           <WordleContext.Provider value={value}>
-            <div className="App">
-                {errorMessage && <div className="error"> {errorMessage} </div>}
-                <Grid/>
-                <Keyboard randomWord={props.randomWord}/>
-            </div>
-        </WordleContext.Provider>
+              <div className="App">
+                  <Navbar/>
+                  {errorMessage && <div className="error"> {errorMessage} </div>}
+                  <Grid/>
+                  <Keyboard randomWord={props.randomWord}/>
+              </div>
+          </WordleContext.Provider>
       </div>
   );
 }
