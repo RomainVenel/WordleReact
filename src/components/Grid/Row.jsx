@@ -5,11 +5,14 @@ import * as React from "react";
 
 function Row(props) {
 
-    const {letter, indexCase, indexRow,  placedLetters, oldWords, colors, setErrorMessage} = React.useContext(WordleContext);
+    const {letter, indexCase, indexRow,  placedLetters, oldWords, colors, setErrorMessage, keyColors} = React.useContext(WordleContext);
     const numbers = [0, 1, 2, 3, 4];
 
     function endGame() {
-        setErrorMessage('Jeu terminé');
+        let popup = document.querySelector('#popup-lose');
+        popup.style.display = 'block';
+        popup.className = 'animate__animated animate__fadeIn';
+        document.querySelector('.App').style.pointerEvents = 'none';
     }
 
     const getLetter = (index) => {

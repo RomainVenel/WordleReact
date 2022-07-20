@@ -4,7 +4,7 @@ import Wordle from "./Wordle";
 
 function App() {
 
-    let ok = downloadDictionnary().then(r => {
+    let word = downloadDictionnary().then(r => {
         return r;
     });
 
@@ -15,8 +15,7 @@ function App() {
             let wordList = text_data.split(" ");
             let maxWords = wordList.length;
             let wordNumber = getRandomInt(0,maxWords);
-            let random = wordList[wordNumber];
-            return random;
+            return wordList[wordNumber];
         } catch (error) {
             console.log(error);
         }
@@ -29,7 +28,7 @@ function App() {
         }
 
     return (
-        <Wordle randomWord={ok}/>
+        <Wordle randomWord={word}/>
     )
 }
 export default App;
