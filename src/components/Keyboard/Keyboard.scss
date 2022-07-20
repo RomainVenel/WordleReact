@@ -2,13 +2,6 @@
   display: flex;
   flex-direction: column;
 
-  .rowKeyboard {
-    display: flex;
-    width: 50vw;
-    gap: 6px;
-    margin-top: 6px;
-  }
-
   .rowKeyboard:first-child {
     margin-top: 25px;
   }
@@ -36,4 +29,26 @@
   .letterKeyboard {
 
   }
+}
+
+@media screen and (max-width: 640px) {
+
+  .rowKeyboard {
+    display: flex;
+    width: 95vw;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+}
+
+@media screen and (min-width: 640px) {
+
+  .rowKeyboard {
+    display: flex;
+    width: 50vw;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
 }
